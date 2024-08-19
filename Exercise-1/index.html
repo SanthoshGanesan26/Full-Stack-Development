@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Educational Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Raleway:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <center>
+    <section id="surprise" class="section">
+        <div class="content">
+            <h1>Santhosh Educational Institutions</h1>
+            <p>Click the button below to reveal a special offer just for you!</p>
+            <a href="#" class="btn surprise-btn" onclick="revealOffer()">Click Me for a Surprise</a>
+            <p id="offer" style="display:none;">Congratulations! You've unlocked a 20% discount on your next course purchase.</p>
+        </div>
+    </section>
+    </center>
+    
+
+    <section id="about" class="section">
+        <div class="content">
+            <h2>About Us</h2>
+            <p>We offer a variety of courses to enhance your skills. Our platform is designed to provide interactive and engaging content that meets the needs of learners of all levels.</p>
+            <p>Our mission is to make education accessible and enjoyable for everyone. Join us and start your learning journey today!</p>
+        </div>
+    </section>
+
+    <section id="courses" class="section">
+        <div class="content">
+            <h1>Our Courses</h1>
+            <div class="course">
+                <h2><a href="course1.html">Introduction to Web Development</a></h2>
+                <p>This course covers the fundamentals of web development, including HTML, CSS, and JavaScript.</p>
+            </div>
+            <div class="course">
+                <h2><a href="course2.html">Advanced JavaScript Techniques</a></h2>
+                <p>This advanced course delves deeper into JavaScript, exploring complex concepts and modern practices.</p>
+            </div>
+            <div class="course">
+                <h2><a href="course3.html">Data Science Fundamentals</a></h2>
+                <p>This course provides a comprehensive introduction to data science, including data analysis and basic machine learning.</p>
+            </div>
+        </div>
+    </section>
+    
+    <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="slide1" class="lightbox-slide" src="image1.jpg">
+            <img id="slide2" class="lightbox-slide" src="image2.jpg">
+            <img id="slide3" class="lightbox-slide" src="image3.jpg">
+            <!-- Add more slides as needed -->
+        </div>
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <section id="contact" class="section">
+        <div class="content">
+            <h2>Contact Us</h2>
+            <p>Have questions? We're here to help! Fill out the form below, and we'll get back to you as soon as possible.</p>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <small class="error-message" id="nameError"></small>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <small class="error-message" id="emailError"></small>
+    
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea><br>
+                <small class="error-message" id="messageError"></small>
+    
+                <button type="submit">Submit</button>
+                <div id="successMessage" class="success-message"></div>
+            </form>
+        </div>
+    </section>
+    
+
+    <footer>
+        <p>&copy; 2024 Educational Platform. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to reveal the special offer
+        function revealOffer() {
+            document.getElementById("offer").style.display = "block";
+        }
+
+        // Lightbox functionality
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("lightbox-slide");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
